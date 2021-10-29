@@ -8,8 +8,80 @@ import bloomberg from "./icons/bloomberg.png";
 import stripe from "./icons/stripe.png";
 import facebook from "./icons/facebook.png";
 import blackstone from "./icons/blackstone.png";
+import SponsorCard from "./SponsorCard";
+import { useState} from "react";
+
 
 function Sponsors() {
+
+    //manually add to just this list, the code does everything else for you!
+    const sponsors = [
+        {
+            class: "gold",
+            link: "https://www.bloomberg.com/",
+            img: bloomberg,
+            imgName: "Bloomberg logo",
+            width: "30%",
+        },
+        {
+            class: "gold",
+            link: "https://www.ghs.com/",
+            img: greenhills,
+            imgName: "Greenhills logo",
+            width: "28%",
+        },
+        {
+            class: "silver",
+            link: "https://www.deshaw.com/",
+            img: deshaw,
+            imgName: "De Shaw logo",
+            width: "22%",
+        },
+        {
+            class: "silver",
+            link: "https://stripe.com/",
+            img: stripe,
+            imgName: "Stripe logo",
+            width:"22%",
+        },
+        {
+            class: "silver",
+            link: "https://facebook.com/",
+            img: facebook,
+            imgName: "Facebook logo",
+            width: "24%",
+        },
+        {
+            class: "bronze",
+            link: "https://www.amazon.com/",
+            img: amazonrobotics,
+            imgName: "Amazon Robotics logo",
+            width: "14%",
+        },
+        {
+            class: "bronze",
+            link: "https://www.capitalone.com/",
+            img: capitalone,
+            imgName: "Capital One logo",
+            width: "14%",
+        },
+        {
+            class: "bronze",
+            link: "https://www.blackstone.com/",
+            img: blackstone,
+            imgName: "Blackstone logo",
+            width: "14%",
+        }
+    ]
+
+    const getGold = sponsors.filter((sponsor)=> (sponsor.class == "gold"));
+    const getSilver = sponsors.filter((sponsor)=> (sponsor.class == "silver"));
+    const getBronze = sponsors.filter((sponsor)=> (sponsor.class == "bronze"));
+
+    const [gold, setGold] = useState(getGold);
+    const [silver, setSilver] = useState(getSilver);
+    const [bronze, setBronze] = useState(getBronze);
+
     return (
         <div className="sponsors">
             <div class="row align-items-center">
@@ -18,72 +90,48 @@ function Sponsors() {
                     <h5>Thank you to all our 2021 sponsors!</h5>
                     <div class="sponsors-tier">
                         <h2 class="gold">Gold</h2>
-                        <a href="https://www.bloomberg.com/">
-                            <img
-                                src={bloomberg}
-                                alt="Bloomberg logo"
-                                width="30%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
-                        <a href="https://www.ghs.com/">
-                            <img
-                                src={greenhills}
-                                alt="Greenhills logo"
-                                width="28%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
+                        {gold.map((sponsor) => {
+                            return (
+                                <SponsorCard
+                                    itemId={sponsor.imgName} // NOTE: itemId is required for track items
+                                    link = {sponsor.link}
+                                    img = {sponsor.img}
+                                    imgName = {sponsor.imgName}
+                                    width = {sponsor.width}
+                                />
+                            );
+                        })}
                     </div>
 
                     <div class="tier">
                         <h3 class="silver">Silver</h3>
-                        <a href="https://www.deshaw.com/">
-                            <img
-                                src={deshaw}
-                                alt="De Shaw logo"
-                                width="22%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
-                        {/* missing seven eight capital */}
-                        <a href="https://stripe.com/">
-                            <img
-                                src={stripe}
-                                alt="Stripe logo"
-                                width="22%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
-                        <a href="https://facebook.com/">
-                            <img
-                                src={facebook}
-                                alt="Facebook logo"
-                                width="24%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
+                        {silver.map((sponsor) => {
+                            return (
+                                <SponsorCard
+                                    itemId={sponsor.imgName} // NOTE: itemId is required for track items
+                                    link = {sponsor.link}
+                                    img = {sponsor.img}
+                                    imgName = {sponsor.imgName}
+                                    width = {sponsor.width}
+                                />
+                            );
+                        })}
+                        {/* missing seven eight capital*/}
                     </div>
 
                     <div class="tier">
                         <h4 class="bronze">Bronze</h4>
-                        <a href="https://www.amazon.com/">
-                            <img
-                                src={amazonrobotics}
-                                alt="Amazon Robotics logo"
-                                width="14%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
-                        <a href="https://www.capitalone.com/">
-                            <img
-                                src={capitalone}
-                                alt="Capital One logo"
-                                width="14%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
-                        {/*how do I fix the spacing and alignment for this one*/}
-                        <a href="https://www.blackstone.com/">
-                            <img
-                                src={blackstone}
-                                alt="Blackstone logo"
-                                width="14%"
-                                className="d-inline-block align-text-top"></img>
-                        </a>
+                        {bronze.map((sponsor) => {
+                            return (
+                                <SponsorCard
+                                    itemId={sponsor.imgName} // NOTE: itemId is required for track items
+                                    link = {sponsor.link}
+                                    img = {sponsor.img}
+                                    imgName = {sponsor.imgName}
+                                    width = {sponsor.width}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
