@@ -14,7 +14,7 @@ import { useState} from "react";
 
 function Sponsors() {
 
-    //manually add to just this list, the code does everything else for you!
+    //manually add to just this list, the code does everything else for you.
     const sponsors = [
         {
             class: "gold",
@@ -88,6 +88,8 @@ function Sponsors() {
                 <div>
                     <h1 class="font-weight-light">Sponsors</h1>
                     <h5>Thank you to all our 2021 sponsors!</h5>
+                    {/* I wish there is a way to combine all three of these into one and use some sort of filtering to vertically 
+                    place them on the page/in a container? */}
                     <div class="sponsors-tier">
                         <h2 class="gold">Gold</h2>
                         {gold.map((sponsor) => {
@@ -102,7 +104,6 @@ function Sponsors() {
                             );
                         })}
                     </div>
-
                     <div class="tier">
                         <h3 class="silver">Silver</h3>
                         {silver.map((sponsor) => {
@@ -118,7 +119,6 @@ function Sponsors() {
                         })}
                         {/* missing seven eight capital*/}
                     </div>
-
                     <div class="tier">
                         <h4 class="bronze">Bronze</h4>
                         {bronze.map((sponsor) => {
